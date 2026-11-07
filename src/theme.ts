@@ -20,13 +20,14 @@ export interface ThemeInfo {
 }
 
 export const THEMES: ThemeInfo[] = [
-  { id: 'stadium', name: 'Stadium Lights', tagline: 'Prime-time under the lights', swatches: ['#060a13', '#111a2c', '#b6ff3b', '#38bdf8'], meta: '#060a13' },
   { id: 'varsity', name: 'Varsity', tagline: 'Old-school letterman jacket', swatches: ['#f2e8d2', '#fffaf0', '#c8102e', '#1d2a44'], meta: '#1d2a44' },
+  { id: 'stadium', name: 'Stadium Lights', tagline: 'Prime-time under the lights', swatches: ['#060a13', '#111a2c', '#b6ff3b', '#38bdf8'], meta: '#060a13' },
   { id: 'neon', name: 'Neon Blitz', tagline: 'Arcade mode, all gas', swatches: ['#0b0420', '#170a35', '#ff2fd6', '#00f0ff'], meta: '#0b0420' },
   { id: 'porcelain', name: 'Royal Flush', tagline: 'Gleaming porcelain & gold', swatches: ['#e6f4fb', '#ffffff', '#1e6bff', '#d9a520'], meta: '#e6f4fb' },
 ];
 
-const KEY = 'toilet-bowl:theme';
+const KEY = 'toilet-bowl:theme:v2';
+export const DEFAULT_THEME: ThemeId = 'varsity';
 
 export function loadTheme(): ThemeId {
   try {
@@ -35,13 +36,17 @@ export function loadTheme(): ThemeId {
   } catch {
     /* storage unavailable */
   }
-  return 'stadium';
+  return DEFAULT_THEME;
 }
 
 export function applyTheme(id: ThemeId) {
   document.documentElement.dataset.theme = id;
   const meta = document.querySelector('meta[name="theme-color"]');
   meta?.setAttribute('content', THEMES.find((t) => t.id === id)!.meta);
+}
+
+/** Remember an explicit choice (not saved until the user picks one, so the default can change). */
+export function saveTheme(id: ThemeId) {
   try {
     localStorage.setItem(KEY, id);
   } catch {

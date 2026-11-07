@@ -1,6 +1,6 @@
 /*
  * Each theme sets the same variables; styles.css only reads them.
- * Stadium Lights is the default.
+ * Varsity is the default (see DEFAULT_THEME in theme.ts); :root carries Stadium values as a fallback.
  */
 
 /* ===== Stadium Lights: prime-time night game ===== */
