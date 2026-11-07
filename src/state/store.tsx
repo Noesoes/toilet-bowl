@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import { League } from '../lib/types';
+import { ThemeId, applyTheme, loadTheme } from '../theme';
 
 const KEY = 'toilet-bowl:league:v1';
 
@@ -10,6 +11,8 @@ interface Store {
   act: (fn: (l: League) => League) => boolean;
   toast: string | null;
   notify: (msg: string) => void;
+  theme: ThemeId;
+  setTheme: (t: ThemeId) => void;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -26,6 +29,9 @@ function load(): League | null {
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [league, setLeagueState] = useState<League | null>(load);
   const [toast, setToast] = useState<string | null>(null);
+  const [theme, setTheme] = useState<ThemeId>(loadTheme);
+
+  useEffect(() => applyTheme(theme), [theme]);
 
   useEffect(() => {
     try {
@@ -57,7 +63,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <Ctx.Provider value={{ league, setLeague: setLeagueState, act, toast, notify: setToast }}>{children}</Ctx.Provider>
+    <Ctx.Provider value={{ league, setLeague: setLeagueState, act, toast, notify: setToast, theme, setTheme }}>{children}</Ctx.Provider>
   );
 }
 

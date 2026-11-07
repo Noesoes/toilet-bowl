@@ -4,7 +4,7 @@ import { League, Lineup, Player, SlotId } from '../lib/types';
 import { SLOTS, benchOf, bestLineup, canPlay, lineupProjection } from '../lib/lineup';
 import { dropPlayer, opponentOf, standings, teamById, userTeam } from '../lib/league';
 import { cachedStatLine } from '../lib/scoring';
-import { PlayerCard, PlayerName, PosBadge, fmt } from './common';
+import { PlayerCard, PlayerName, PosBadge, TeamLogo, fmt } from './common';
 import { lineupIssues } from './Matchup';
 
 /** A spot is either a lineup slot or a bench player. */
@@ -74,13 +74,16 @@ export default function MyTeam() {
 
   return (
     <>
-      <header className="page-head">
+      <header className="page-head with-logo">
+        <TeamLogo team={me} size={64} />
+        <div>
         <div className="eyebrow">{me.owner} · #{rank} of {league.teams.length}</div>
         <h1>{me.name}</h1>
         <div className="team-meta">
           <span className="pill">{record.w}-{record.l}{record.t ? `-${record.t}` : ''}</span>
           <span className="pill">PF {fmt(record.pf)}</span>
           {opp && !done && <span className="pill">Wk {week} vs {teamById(league, opp).name}</span>}
+        </div>
         </div>
       </header>
 

@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useStore } from '../state/store';
 import { advanceToUser, createLeague } from '../lib/league';
+import { ThemePicker } from './common';
 
 export default function Setup() {
   const { setLeague } = useStore();
@@ -26,7 +27,7 @@ export default function Setup() {
     <main className="screen setup">
       <div className="hero">
         <div className="hero-logo">🚽🏈</div>
-        <h1>Toilet Bowl Fantasy</h1>
+        <h1>Toilet Bowl <span>Fantasy</span></h1>
         <p className="muted">Draft a team, set your lineup, and stay out of last place.</p>
       </div>
       <form className="card form" onSubmit={submit}>
@@ -65,6 +66,10 @@ export default function Setup() {
         </ul>
         <button className="btn primary big" type="submit">Create league & start draft</button>
       </form>
+      <section className="card">
+        <h2 className="card-title">Pick your style</h2>
+        <ThemePicker />
+      </section>
     </main>
   );
 }

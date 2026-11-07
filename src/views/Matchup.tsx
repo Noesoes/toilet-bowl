@@ -4,7 +4,7 @@ import { Lineup, Matchup as M, Player } from '../lib/types';
 import { SLOTS, bestLineup, effectiveProj, lineupProjection } from '../lib/lineup';
 import { matchupsForWeek, simulateWeek, teamById, teamScore, totalWeeks, userTeam } from '../lib/league';
 import { cachedStatLine } from '../lib/scoring';
-import { PlayerCard, PosBadge, fmt } from './common';
+import { Modal, PlayerCard, PosBadge, TeamLogo, ThemePicker, fmt } from './common';
 
 export function weekLabel(week: number, regular: number): string {
   if (week <= regular) return `Week ${week}`;
@@ -17,6 +17,7 @@ export default function Matchup({ goTo }: { goTo: (t: 'team') => void }) {
   const done = league.phase === 'done';
   const lastPlayed = league.results.length;
   const [mode, setMode] = useState<'next' | 'last'>(done ? 'last' : 'next');
+  const [styling, setStyling] = useState(false);
   const showMode = done ? 'last' : mode;
   const week = showMode === 'next' ? league.week : lastPlayed;
 
@@ -30,10 +31,18 @@ export default function Matchup({ goTo }: { goTo: (t: 'team') => void }) {
 
   return (
     <>
-      <header className="page-head">
-        <div className="eyebrow">{league.name}</div>
-        <h1>{done ? 'Season complete' : weekLabel(league.week, league.regularSeasonWeeks)}</h1>
+      <header className="page-head head-row">
+        <div>
+          <div className="eyebrow">{league.name}</div>
+          <h1>{done ? 'Season complete' : weekLabel(league.week, league.regularSeasonWeeks)}</h1>
+        </div>
+        <button className="btn small style-btn" onClick={() => setStyling(true)} aria-label="Change app style">🎨 Style</button>
       </header>
+      {styling && (
+        <Modal title="App style" onClose={() => setStyling(false)}>
+          <ThemePicker />
+        </Modal>
+      )}
 
       {done && <SeasonSummary />}
 
@@ -135,12 +144,14 @@ export function MatchupDetail({ week, matchup, final }: { week: number; matchup:
       {matchup.label && <div className={`bracket-label ${matchup.bracket}`}>{matchup.label}</div>}
       <div className="mu-head">
         <div className={`mu-team ${final && ls > rs ? 'win' : ''}`}>
+          <TeamLogo team={left} size={44} />
           <div className="mu-team-name">{left.name}</div>
           <div className="mu-owner muted small">{left.owner}</div>
           <div className="mu-score">{fmt(ls)}</div>
         </div>
         <div className="mu-vs muted">{final ? 'FINAL' : 'PROJ'}</div>
         <div className={`mu-team r ${final && rs > ls ? 'win' : ''}`}>
+          <TeamLogo team={right} size={44} />
           <div className="mu-team-name">{right.name}</div>
           <div className="mu-owner muted small">{right.owner}</div>
           <div className="mu-score">{fmt(rs)}</div>
@@ -190,8 +201,8 @@ function Scoreboard({ week, final }: { week: number; final: boolean }) {
           return (
             <div key={i} className="sb-game">
               {m.label && <div className={`bracket-label small ${m.bracket}`}>{m.label}</div>}
-              <div className={`sb-line ${r && hs > as ? 'win' : ''} ${h.isUser ? 'me' : ''}`}><span>{h.name}</span><span className="num">{fmt(hs)}</span></div>
-              <div className={`sb-line ${r && as > hs ? 'win' : ''} ${a.isUser ? 'me' : ''}`}><span>{a.name}</span><span className="num">{fmt(as)}</span></div>
+              <div className={`sb-line ${r && hs > as ? 'win' : ''} ${h.isUser ? 'me' : ''}`}><TeamLogo team={h} size={22} /><span className="sb-name">{h.name}</span><span className="num">{fmt(hs)}</span></div>
+              <div className={`sb-line ${r && as > hs ? 'win' : ''} ${a.isUser ? 'me' : ''}`}><TeamLogo team={a} size={22} /><span className="sb-name">{a.name}</span><span className="num">{fmt(as)}</span></div>
             </div>
           );
         })}
@@ -207,9 +218,11 @@ function SeasonSummary() {
   return (
     <section className="card summary">
       <div className="trophy">🏆</div>
+      <TeamLogo team={champ} size={56} />
       <h2>{champ.name} win the title!</h2>
       <p className="muted">{champ.isUser ? 'That’s you. Unbelievable.' : `Congrats to ${champ.owner}.`}</p>
       <div className="trophy">🚽</div>
+      <TeamLogo team={loser} size={56} />
       <h2>{loser.name} lost the Toilet Bowl</h2>
       <p className="muted">{loser.isUser ? 'That’s you. Enjoy your punishment.' : `${loser.owner} has some explaining to do.`}</p>
       <button className="btn primary" onClick={() => confirm('Start a new league? This season will be erased.') && setLeague(null)}>

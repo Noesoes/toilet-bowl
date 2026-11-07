@@ -3,7 +3,7 @@ import { useLeague } from '../state/store';
 import { Matchup as M } from '../lib/types';
 import { evaluateTrade, executeTrade, matchupsForWeek, standings, teamById, totalWeeks, userTeam } from '../lib/league';
 import { SCORING } from '../lib/scoring';
-import { Modal, PosBadge, fmt } from './common';
+import { Modal, PosBadge, TeamLogo, ThemePicker, fmt } from './common';
 import { MatchupDetail, weekLabel } from './Matchup';
 
 type View = 'standings' | 'schedule' | 'trade' | 'activity' | 'settings';
@@ -49,14 +49,19 @@ function Standings() {
             const zone = i < 4 ? 'zone-playoff' : i >= n - 4 ? 'zone-toilet' : '';
             return (
               <tr key={r.teamId} className={`${zone} ${t.isUser ? 'me' : ''} ${i === 3 || i === n - 5 ? 'cutline' : ''}`}>
-                <td>{i + 1}</td>
+                <td className="rank-cell">{i + 1}</td>
                 <td>
                   <div className="team-cell">
-                    {t.name}
-                    {league.champion === t.id && ' 🏆'}
-                    {league.toiletBowlLoser === t.id && ' 🚽'}
+                    <TeamLogo team={t} size={34} />
+                    <div>
+                      <div className="team-name">
+                        {t.name}
+                        {league.champion === t.id && ' 🏆'}
+                        {league.toiletBowlLoser === t.id && ' 🚽'}
+                      </div>
+                      <div className="muted small">{t.owner}</div>
+                    </div>
                   </div>
-                  <div className="muted small">{t.owner}</div>
                 </td>
                 <td className="num">{r.w}-{r.l}{r.t ? `-${r.t}` : ''}</td>
                 <td className="num">{fmt(r.pf)}</td>
@@ -98,8 +103,8 @@ function Schedule() {
             return (
               <button key={i} className="sb-game clickable" onClick={() => setOpen(m)}>
                 {m.label && <div className={`bracket-label small ${m.bracket}`}>{m.label}</div>}
-                <div className={`sb-line ${r && r.homeScore > r.awayScore ? 'win' : ''} ${h.isUser ? 'me' : ''}`}><span>{h.name}</span><span className="num">{r ? fmt(r.homeScore) : '–'}</span></div>
-                <div className={`sb-line ${r && r.awayScore > r.homeScore ? 'win' : ''} ${a.isUser ? 'me' : ''}`}><span>{a.name}</span><span className="num">{r ? fmt(r.awayScore) : '–'}</span></div>
+                <div className={`sb-line ${r && r.homeScore > r.awayScore ? 'win' : ''} ${h.isUser ? 'me' : ''}`}><TeamLogo team={h} size={22} /><span className="sb-name">{h.name}</span><span className="num">{r ? fmt(r.homeScore) : '–'}</span></div>
+                <div className={`sb-line ${r && r.awayScore > r.homeScore ? 'win' : ''} ${a.isUser ? 'me' : ''}`}><TeamLogo team={a} size={22} /><span className="sb-name">{a.name}</span><span className="num">{r ? fmt(r.awayScore) : '–'}</span></div>
               </button>
             );
           })}
@@ -206,6 +211,10 @@ function Settings() {
   ];
   return (
     <>
+      <section className="card">
+        <h2 className="card-title">App style</h2>
+        <ThemePicker />
+      </section>
       <section className="card">
         <h2 className="card-title">Scoring</h2>
         <table className="table compact"><tbody>

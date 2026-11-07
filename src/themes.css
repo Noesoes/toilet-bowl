@@ -1,0 +1,315 @@
+/*
+ * Each theme sets the same variables; styles.css only reads them.
+ * Stadium Lights is the default.
+ */
+
+/* ===== Stadium Lights: prime-time night game ===== */
+:root,
+[data-theme='stadium'] {
+  color-scheme: dark;
+  --bg: #060a13;
+  --bg-image:
+    radial-gradient(ellipse 60% 40% at 15% -5%, rgba(182, 255, 59, 0.16), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% -5%, rgba(56, 189, 248, 0.16), transparent 70%),
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(255, 255, 255, 0.025) 79px 80px);
+  --surface: rgba(17, 26, 44, 0.82);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.09);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #eef3fb;
+  --muted: #8392ad;
+  --accent: #b6ff3b;
+  --accent-2: #38bdf8;
+  --accent-ink: #0b1600;
+  --accent-soft: rgba(182, 255, 59, 0.13);
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --toilet: #d39a5b;
+  --toilet-soft: rgba(211, 154, 91, 0.16);
+  --qb: #f0517a; --rb: #14c8a8; --wr: #3d8bff; --te: #ff9a2e; --k: #9b7bff; --def: #7c8aa5; --flex: #475569;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --display-weight: 700;
+  --display-case: uppercase;
+  --display-tracking: 0.02em;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --badge-radius: 6px;
+  --border-w: 1px;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --card-blur: blur(10px);
+  --btn-shadow: none;
+  --btn-primary-bg: linear-gradient(180deg, #ccff6b, #9be624);
+  --btn-primary-shadow: 0 0 24px rgba(182, 255, 59, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --seg-active-bg: rgba(182, 255, 59, 0.14);
+  --seg-active-ink: #b6ff3b;
+  --chip-active-bg: #b6ff3b;
+  --chip-active-ink: #0b1600;
+  --score-glow: 0 0 18px rgba(182, 255, 59, 0.5);
+  --winbar-fill: linear-gradient(90deg, rgba(182, 255, 59, 0.05), rgba(182, 255, 59, 0.3));
+
+  --hero-bg:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 44px, transparent 44px 88px),
+    radial-gradient(ellipse at 50% 0%, rgba(182, 255, 59, 0.18), transparent 70%),
+    linear-gradient(160deg, #0f3b1c, #0a1f2e 70%);
+  --hero-ink: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.6);
+  --hero-logo-glow: 0 0 22px rgba(182, 255, 59, 0.45);
+
+  --tabbar-h: 66px;
+  --tabbar-bg: rgba(6, 10, 19, 0.82);
+  --tabbar-border: 1px solid rgba(255, 255, 255, 0.08);
+  --tabbar-ink: #6b7a95;
+  --tabbar-active: #b6ff3b;
+  --tab-glow: 0 0 12px #b6ff3b;
+
+  --logo-radius: 50%;
+  --logo-sat: 70%;
+  --logo-l1: 48%;
+  --logo-l2: 32%;
+  --logo-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --logo-border: 0;
+  --modal-bg: #0f1729;
+}
+
+/* ===== Varsity: letterman jacket, chain-stitch, cream paper ===== */
+[data-theme='varsity'] {
+  color-scheme: light;
+  --bg: #f2e8d2;
+  --bg-image:
+    repeating-linear-gradient(90deg, transparent 0 26px, rgba(200, 16, 46, 0.06) 26px 28px, transparent 28px 32px, rgba(29, 42, 68, 0.05) 32px 34px),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.6), transparent 70%);
+  --surface: #fffaf0;
+  --surface-2: #f5ecd9;
+  --border: #1d2a44;
+  --divider: rgba(29, 42, 68, 0.14);
+  --text: #1d2a44;
+  --muted: #6e6552;
+  --accent: #c8102e;
+  --accent-2: #1d2a44;
+  --accent-ink: #fffaf0;
+  --accent-soft: rgba(200, 16, 46, 0.1);
+  --warn: #e0a019;
+  --danger: #b0141f;
+  --toilet: #8a5a24;
+  --toilet-soft: rgba(138, 90, 36, 0.14);
+  --qb: #b5374f; --rb: #2b7a6e; --wr: #34548f; --te: #c27a2c; --k: #6f53a0; --def: #55606f; --flex: #1d2a44;
+
+  --font-body: 'Nunito', -apple-system, 'Segoe UI', sans-serif;
+  --body-weight: 600;
+  --font-display: 'Graduate', 'Rockwell', serif;
+  --display-weight: 400;
+  --display-case: uppercase;
+  --display-tracking: 0.01em;
+
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-pill: 6px;
+  --badge-radius: 3px;
+  --border-w: 2px;
+  --card-shadow: 4px 4px 0 #1d2a44;
+  --card-shadow-sm: 3px 3px 0 #1d2a44;
+  --btn-shadow: 3px 3px 0 #1d2a44;
+  --press-x: 2px;
+  --press-y: 2px;
+  --btn-primary-bg: #c8102e;
+  --btn-primary-border: #1d2a44;
+  --btn-primary-shadow: 3px 3px 0 #1d2a44;
+  --seg-active-bg: #1d2a44;
+  --seg-active-ink: #f2e8d2;
+  --chip-active-bg: #c8102e;
+  --chip-active-ink: #fffaf0;
+  --score-glow: none;
+  --winbar-fill: repeating-linear-gradient(-45deg, rgba(200, 16, 46, 0.25) 0 6px, rgba(200, 16, 46, 0.12) 6px 12px);
+  --input-bg: #fffdf7;
+
+  --hero-bg:
+    linear-gradient(180deg, transparent calc(100% - 12px), #c8102e calc(100% - 12px) calc(100% - 8px), #f2e8d2 calc(100% - 8px) calc(100% - 4px), #c8102e calc(100% - 4px)),
+    #1d2a44;
+  --hero-ink: #f2e8d2;
+  --hero-muted: rgba(242, 232, 210, 0.65);
+
+  --tabbar-h: 66px;
+  --tabbar-bg: #1d2a44;
+  --tabbar-border: 4px solid #c8102e;
+  --tabbar-ink: rgba(242, 232, 210, 0.55);
+  --tabbar-active: #f5c242;
+
+  --logo-radius: 6px 6px 50% 50% / 6px 6px 40% 40%;
+  --logo-sat: 55%;
+  --logo-l1: 40%;
+  --logo-l2: 30%;
+  --logo-shadow: 2px 2px 0 #1d2a44;
+  --logo-border: 2px solid #1d2a44;
+}
+[data-theme='varsity'] .mu-team.win .mu-score { color: #f5c242; }
+[data-theme='varsity'] .clock.mine b,
+[data-theme='varsity'] .clock.mine { color: #f2e8d2; }
+[data-theme='varsity'] .hero h1 { color: #1d2a44; text-shadow: 3px 3px 0 #c8102e; }
+[data-theme='varsity'] .hero h1 span { color: #c8102e; text-shadow: 3px 3px 0 #1d2a44; }
+[data-theme='varsity'] .big-num { color: #c8102e; text-shadow: 2px 2px 0 #1d2a44; }
+[data-theme='varsity'] .card-title { color: #1d2a44; border-bottom: 2px dashed rgba(29, 42, 68, 0.3); padding-bottom: 6px; }
+[data-theme='varsity'] .mu-vs { border-width: 2px; }
+
+/* ===== Neon Blitz: synthwave arcade ===== */
+[data-theme='neon'] {
+  color-scheme: dark;
+  --bg: #0b0420;
+  --bg-image:
+    radial-gradient(ellipse 80% 45% at 50% -10%, rgba(140, 40, 255, 0.45), transparent 70%),
+    linear-gradient(rgba(255, 47, 214, 0.07) 1px, transparent 1px) 0 0 / 34px 34px,
+    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px) 0 0 / 34px 34px;
+  --surface: rgba(24, 10, 56, 0.85);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 47, 214, 0.38);
+  --divider: rgba(0, 240, 255, 0.1);
+  --text: #f6eaff;
+  --muted: #a28cc7;
+  --accent: #ff2fd6;
+  --accent-2: #00f0ff;
+  --accent-ink: #1a0029;
+  --accent-soft: rgba(255, 47, 214, 0.15);
+  --warn: #ffd60a;
+  --danger: #ff4d6d;
+  --toilet: #ffa54f;
+  --toilet-soft: rgba(255, 165, 79, 0.15);
+  --qb: #ff3d7f; --rb: #00d9a6; --wr: #2f8bff; --te: #ff8a00; --k: #a855f7; --def: #64748b; --flex: #4c1d95;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Russo One', 'Arial Black', sans-serif;
+  --display-weight: 400;
+  --display-case: uppercase;
+  --display-tracking: 0.04em;
+
+  --radius: 4px;
+  --radius-sm: 3px;
+  --radius-pill: 3px;
+  --badge-radius: 2px;
+  --border-w: 1px;
+  --card-shadow: 0 0 0 1px rgba(0, 240, 255, 0.08), 0 0 26px rgba(255, 47, 214, 0.16);
+  --card-blur: blur(6px);
+  --btn-shadow: none;
+  --btn-primary-bg: linear-gradient(90deg, #ff2fd6, #a24bff);
+  --btn-primary-shadow: 0 0 18px rgba(255, 47, 214, 0.6), 0 0 2px #fff inset;
+  --seg-active-bg: linear-gradient(90deg, rgba(255, 47, 214, 0.25), rgba(0, 240, 255, 0.15));
+  --seg-active-ink: #ffffff;
+  --seg-active-shadow: 0 0 12px rgba(255, 47, 214, 0.35);
+  --chip-active-bg: #00f0ff;
+  --chip-active-ink: #0b0420;
+  --score-glow: 0 0 10px rgba(255, 47, 214, 0.9), 0 0 26px rgba(255, 47, 214, 0.5);
+  --winbar-fill: linear-gradient(90deg, rgba(0, 240, 255, 0.2), rgba(255, 47, 214, 0.45));
+
+  --hero-bg:
+    linear-gradient(transparent 60%, rgba(255, 47, 214, 0.18)),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 2px, transparent 2px 4px),
+    linear-gradient(120deg, #3b0a6b, #12052e 55%, #00394a);
+  --hero-ink: #ffffff;
+  --hero-muted: rgba(225, 205, 255, 0.65);
+  --hero-logo-glow: 0 0 18px rgba(255, 47, 214, 0.8);
+
+  --tabbar-h: 66px;
+  --tabbar-bg: rgba(11, 4, 32, 0.88);
+  --tabbar-border: 1px solid rgba(255, 47, 214, 0.45);
+  --tabbar-ink: #7a66a3;
+  --tabbar-active: #00f0ff;
+  --tab-glow: 0 0 12px #00f0ff;
+
+  --logo-radius: 4px;
+  --logo-sat: 95%;
+  --logo-l1: 55%;
+  --logo-l2: 35%;
+  --logo-shadow: none;
+  --logo-border: 1px solid rgba(255, 255, 255, 0.4);
+  --modal-bg: #150832;
+}
+[data-theme='neon'] .btn.big,
+[data-theme='neon'] .clock { clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); }
+[data-theme='neon'] .page-head h1,
+[data-theme='neon'] .hero h1 { background: linear-gradient(90deg, #ff2fd6, #00f0ff); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 0 10px rgba(255, 47, 214, 0.5)); }
+[data-theme='neon'] .hero h1 span { color: transparent; }
+[data-theme='neon'] .mu-team:not(.win) .mu-score { text-shadow: 0 0 8px rgba(0, 240, 255, 0.4); color: #7fdcff; }
+[data-theme='neon'] .logo { box-shadow: 0 0 12px hsl(var(--hue) 95% 60% / 0.6); }
+[data-theme='neon'] .eyebrow { text-shadow: 0 0 8px rgba(0, 240, 255, 0.7); }
+
+/* ===== Royal Flush: gleaming porcelain, water blue, gold trim ===== */
+[data-theme='porcelain'] {
+  color-scheme: light;
+  --bg: #eef7fc;
+  --bg-image:
+    radial-gradient(circle at 12% 18%, rgba(70, 179, 255, 0.18) 0 38px, transparent 39px),
+    radial-gradient(circle at 96% 3%, rgba(70, 179, 255, 0.1) 0 60px, transparent 61px),
+    radial-gradient(circle at 78% 62%, rgba(70, 179, 255, 0.1) 0 26px, transparent 27px),
+    radial-gradient(circle at 20% 86%, rgba(217, 165, 32, 0.1) 0 44px, transparent 45px),
+    linear-gradient(180deg, #dff1fb, #f7fbff 45%, #eef7fc);
+  --surface: #ffffff;
+  --surface-2: #eef5fb;
+  --border: #d3e4f1;
+  --divider: #e5eef6;
+  --text: #0e2a47;
+  --muted: #5f7891;
+  --accent: #1e6bff;
+  --accent-2: #c48f12;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(30, 107, 255, 0.1);
+  --warn: #f2a516;
+  --danger: #e5484d;
+  --toilet: #9a6a2f;
+  --toilet-soft: rgba(154, 106, 47, 0.12);
+  --qb: #f2557b; --rb: #18b89b; --wr: #3b82f6; --te: #f59e0b; --k: #8b5cf6; --def: #7b8ba3; --flex: #5b6b82;
+
+  --font-body: 'Nunito', -apple-system, 'Segoe UI', sans-serif;
+  --body-weight: 600;
+  --font-display: 'Fredoka', 'Nunito', sans-serif;
+  --display-weight: 700;
+  --display-case: none;
+  --display-tracking: -0.01em;
+
+  --radius: 24px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+  --badge-radius: 999px;
+  --border-w: 1px;
+  --card-shadow: 0 10px 28px rgba(30, 107, 255, 0.09), 0 2px 4px rgba(14, 42, 71, 0.04), inset 0 1px 0 #fff;
+  --card-shadow-sm: 0 4px 12px rgba(30, 107, 255, 0.08);
+  --btn-shadow: 0 2px 6px rgba(14, 42, 71, 0.06);
+  --btn-primary-bg: linear-gradient(180deg, #4a8bff, #1e6bff);
+  --btn-primary-shadow: 0 8px 20px rgba(30, 107, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  --seg-active-bg: #ffffff;
+  --seg-active-ink: #1e6bff;
+  --seg-active-shadow: 0 2px 8px rgba(30, 107, 255, 0.18);
+  --chip-active-bg: #1e6bff;
+  --chip-active-ink: #ffffff;
+  --score-glow: none;
+  --winbar-fill: linear-gradient(90deg, rgba(70, 179, 255, 0.25), rgba(30, 107, 255, 0.35));
+
+  --hero-bg:
+    radial-gradient(circle at 58% 18%, rgba(255, 255, 255, 0.18) 0 22px, transparent 23px),
+    radial-gradient(circle at 42% 80%, rgba(255, 255, 255, 0.14) 0 12px, transparent 13px),
+    radial-gradient(ellipse 120% 60% at 50% 120%, rgba(255, 255, 255, 0.25), transparent 70%),
+    linear-gradient(135deg, #1e6bff, #3fb2ff);
+  --hero-ink: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.75);
+
+  --tabbar-h: 68px;
+  --tabbar-bg: rgba(255, 255, 255, 0.85);
+  --tabbar-border: 1px solid #d3e4f1;
+  --tabbar-ink: #8aa0b6;
+  --tabbar-active: #1e6bff;
+
+  --logo-radius: 50%;
+  --logo-sat: 75%;
+  --logo-l1: 60%;
+  --logo-l2: 48%;
+  --logo-shadow: 0 0 0 3px #fff, 0 0 0 4.5px #e2b542, 0 4px 10px rgba(14, 42, 71, 0.15);
+  --logo-border: 0;
+}
+[data-theme='porcelain'] .mu-team.win .mu-score { color: #fff; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12); }
+[data-theme='porcelain'] .mu-team.win .mu-team-name::after { content: ' 👑'; }
+[data-theme='porcelain'] .hero h1 { color: #0e2a47; }
+[data-theme='porcelain'] .hero h1 span { background: linear-gradient(90deg, #1e6bff, #3fb2ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+[data-theme='porcelain'] .summary { border: 2px solid #e2b542; }
+[data-theme='porcelain'] .clock.mine { border-color: transparent; }
+[data-theme='porcelain'] .tabbar button { text-transform: none; letter-spacing: 0; font-size: 12px; }
